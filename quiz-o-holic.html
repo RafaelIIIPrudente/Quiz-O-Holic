@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz-O-Holic</title>
+    <!-- Link for Icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="icon" type="image/png" href="images/1.png"> <!--website icon-->
+</head>
+<body>
+    
+    <!-- Info Box -->
+  <div class="informationBox" style="background-image: 
+	linear-gradient(180deg, rgb(228, 207, 207), rgb(250, 184, 108));border-radius: 10px; 
+	border-style: ridge;">
+		<div class = "title"> 
+			<h1 style= "text-align: center; font-size: 150px; font-family:cursive; 
+			color: rgb(18, 157, 204);">Quiz-O-Holic</h1> </div>
+    <div class="buttons" style="text-align: center; margin-top: 100px; ">
+      <button class="restart" onclick="continueButton()" style="font-size: 50px;">
+      Start Here!</button>
+    </div>
+  </div>
+
+    <!-- Quiz Box -->
+    <div class="quizBox" style="display:none;">
+      <div class="timer" style="text-align: center;">
+        <div class="countDown" style="font-size: 100px; background-color: aquamarine;
+				border-style: groove; border-radius: 100px;">Timer</div>
+        <div class="timerSeconds" style="font-size: 65px; background-color: rgb(192, 13, 153);
+				border-style: groove; border-radius: 100px;">15</div>
+      </div>
+      <div class="timeFrame"></div>
+    <br>
+    	<section style="text-align:center; background-color: aquamarine;
+			border-style: groove; border-radius: 10px;">
+      	<div class="questionText" style="font-weight:bold; font-size: 50px;">
+      	<!-- Here we've inserted question from JavaScript -->
+      	</div>
+      	<div class="optionList" style="font-size:35px">
+      	<!-- Here we've inserted options from JavaScript -->
+      	</div>
+      </section>
+
+      	<!-- footer of Quiz Box -->
+        <footer style="text-align:center; background: rgb(161, 227, 230); border-radius: 60px; 
+				border-style: groove;" >
+          <div class="totalQuestion" style="font-size: 28px;">
+            <!-- Here we've inserted Question Count Number from JavaScript -->
+          </div>
+      	<button class="nextButton" onclick="nextButton()" 
+				style="font-size: 30px;">Next Question</button>
+        </footer>
+    </div> 
+    <br>
+
+    <!-- Result Box -->
+    <div class="resultBox" style="text-align:center; background: cornsilk; border-radius: 10px; 
+		border-style: groove;">
+      <div class="scoreText" style="font-size: 40px; font-family: cursive;">
+      <!-- Here we've inserted Score Result from JavaScript -->
+    	</div>
+    
+			<div class="buttons" style="background: beige; border-style: groove; border-radius: 100px;">
+        <button class="restart" onclick="replayButton()" style="font-size: 25px;">Replay Quiz</button>
+        <button class="quit" onclick="quitButton()" style="font-size: 25px;">Quit Quiz</button>
+    	</div>
+    </div>
+
+    <!-- Inside this JavaScript file we've inserted Questions and Options only -->
+    <script src="questions.js"></script> 
+
+    <!-- Inside this JavaScript file we've coded for the quiz codes -->
+    <script src="quiz-o-holic.js"></script>
+</body>
+</html>
