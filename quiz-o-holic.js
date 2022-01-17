@@ -4,12 +4,12 @@ let optionList = document.querySelector(".optionList");
 let quizBox = document.querySelector(".quizBox");
 let resultBox = document.querySelector(".resultBox");
 let timeFrame = document.querySelector("header .timeFrame");
-let countDown = document.querySelector(".timer .countDown");
+let countDown = document.querySelector(".timer .countDown"); 
 let timeCount = document.querySelector(".timer .timerSeconds");
 
 // if continue button is clicked
 function continueButton() {
-	showQuetions(0); //calling showQuestions function
+	showQuestions(0); //calling showQuestions function
 	questionCount(1); //calling questionCount function
 	startTimer(15); //calling startTimer function
 	displayQuizBox(); //calling displayQuizBox function
@@ -30,7 +30,7 @@ function replayButton() {
 	questionNumber = 1;
 	userScore = 0;
 	widthValue = 0;
-	showQuetions(countingQuestionsNumber); //calling showQuestions function
+	showQuestions(countingQuestionsNumber); //calling showQuestions function
 	questionCount(questionNumber);
 	clearInterval(counter); //clear counter
 	startTimer(timeValue); //calling startTimer function
@@ -50,10 +50,11 @@ function nextButton() {
 	if (countingQuestionsNumber < questions.length - 1){ //if number of questions is less than total question length
 		countingQuestionsNumber++; //increment 
 		questionNumber++; //increment the question number value
-		showQuetions(countingQuestionsNumber); //calling showQuestions function
-		questionCount(questionNumber); //passing question number value to queCounter
+		showQuestions(countingQuestionsNumber); //calling showQuestions function
+		questionCount(questionNumber); //passing question number value to questionCount
 		clearInterval(counter); //clear counter
 		startTimer(timeValue); //calling startTimer function
+
 	} else {
 		clearInterval(counter); //clear counter
 		showResult(); //calling showResult function
@@ -62,22 +63,23 @@ function nextButton() {
 }
 
 // getting questions and options from array
-function showQuetions(index) {
-	let questionText = document.querySelector(".questionText");
+function showQuestions(index) {
+  let questionText = document.querySelector(".questionText");
 
 	//creating a new span and div tag for question and option and passing the value using array index
-	let questionTag = '<span>'+ questions[index].numb + ". " + questions[index].question +'</span>';
-	let optionTag = '<div class="option"><span>'+ questions[index].options[0] +'</span></div>'
-	+ '<div class="option"><span>'+ questions[index].options[1] +'</span></div>'
-	+ '<div class="option"><span>'+ questions[index].options[2] +'</span></div>'
-	+ '<div class="option"><span>'+ questions[index].options[3] +'</span></div>';
-	questionText.innerHTML = questionTag; //adding new span tag inside question Text
-	optionList.innerHTML = optionTag; //adding new div tag inside option List
+	let questionTag = '<span>'+ questions[index].numb + "." + questions[index].question +'</span>';
 	
+	for (let i = 0; i < questions[index].options.length; i += 1) { 
+    let options = questions[index].options[i]; // it is here where we added a loop to display the options
+		let optionTag= '<div class="option"><span>'+ options +'</span></div>';
+		optionList.innerHTML += `${optionTag}`; //adding new div tag inside option List
+	}
+	questionText.innerHTML = questionTag; //adding new span tag inside question Text
+
 	let option = optionList.querySelectorAll(".option");
 
 	// set onclick attribute to all available options
-	for(i=0; i < option.length; i++) {
+	for (i=0; i < option.length; i++) {
 		option[i].setAttribute("onclick", "optionSelected(this)");
 	}
 }
@@ -99,10 +101,17 @@ function optionSelected(answer) {
 		playCorrectMusic();
 		console.log("Correct Answer");
 		console.log("Your correct answers = " + userScore);
+		setTimeout(function() {
+			optionList.innerHTML="";
+		}, 3000);
+	
 	} else {
 		answer.insertAdjacentHTML("beforeEnd", crossIconTag); //adding cross icon to correct selected option
 		playWrongMusic();
 		console.log("Wrong Answer");
+		setTimeout(function() {
+			optionList.innerHTML="";
+		}, 3000);
 
 		for (i = 0; i < allOptions; i++) {
 			if (optionList.children[i].textContent === correcAns) { //if there is an option which is matched to an array answer 
@@ -146,6 +155,9 @@ function startTimer(time) {
 			countDown.textContent = "Time Off"; //change the time text to time off
 			let allOptions = optionList.children.length; //getting all option items
 			let correcAns = questions[countingQuestionsNumber].answer; //getting correct answer from array
+			setTimeout(function() {
+				optionList.innerHTML="";
+			}, 3000);
 			
 			for (i=0; i < allOptions; i++) {
 				if (optionList.children[i].textContent === correcAns) { //if there is an option which is matched to an array answer
@@ -194,3 +206,4 @@ function playCongratsMusic() {
 	let music = new Audio (href='music/congrats.mp3');
 	music.play();
 }
+
