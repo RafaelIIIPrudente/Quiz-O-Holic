@@ -9,13 +9,13 @@ let timeCount = document.querySelector(".timer .timerSeconds");
 
 // if continue button is clicked
 function continueButton() {
-	showQuestions(0); //calling showQuestions function
-	questionCount(1); //calling questionCount function
-	startTimer(15); //calling startTimer function
-	displayQuizBox(); //calling displayQuizBox function
-	dontDisplayInfoBox(); //calling dontDisplayInfoBox function
-	playMusic(); //calling playMusic function
-	}
+  showQuestions(0); //calling showQuestions function
+  questionCount(1); //calling questionCount function
+  startTimer(15); //calling startTimer function
+  displayQuizBox(); //calling displayQuizBox function
+  dontDisplayInfoBox(); //calling dontDisplayInfoBox function
+  playMusic(); //calling playMusic function
+}
 
 let timeValue =  15;
 let countingQuestionsNumber = 0;
@@ -25,21 +25,21 @@ let counter;
 
 // if replayButton button is clicked
 function replayButton() {
-	timeValue = 15; 
-	countingQuestionsNumber = 0;
-	questionNumber = 1;
-	userScore = 0;
-	widthValue = 0;
-	showQuestions(countingQuestionsNumber); //calling showQuestions function
-	questionCount(questionNumber);
-	clearInterval(counter); //clear counter
-	startTimer(timeValue); //calling startTimer function
-	displayQuizBox();
+  timeValue = 15; 
+  countingQuestionsNumber = 0;
+  questionNumber = 1;
+  userScore = 0;
+  widthValue = 0;
+  showQuestions(countingQuestionsNumber); //calling showQuestions function
+  questionCount(questionNumber);
+  clearInterval(counter); //clear counter
+  startTimer(timeValue); //calling startTimer function
+  displayQuizBox();
 }
 
 // if quit button clicked
 function quitButton() {
-	document.location = 'home.html'  //go back to the home page
+  document.location = 'home.html'  //go back to the home page
 }
 
 let nextQuestionButton = document.querySelector("footer .nextButton");
@@ -47,19 +47,19 @@ let questionCounter = document.querySelector("footer .totalQuestion");
 
 // if Next button clicked
 function nextButton() {
-	if (countingQuestionsNumber < questions.length - 1){ //if number of questions is less than total question length
-		countingQuestionsNumber++; //increment 
-		questionNumber++; //increment the question number value
-		showQuestions(countingQuestionsNumber); //calling showQuestions function
-		questionCount(questionNumber); //passing question number value to questionCount
-		clearInterval(counter); //clear counter
-		startTimer(timeValue); //calling startTimer function
+  if (countingQuestionsNumber < questions.length - 1){ //if number of questions is less than total question length
+    countingQuestionsNumber++; //increment 
+    questionNumber++; //increment the question number value
+    showQuestions(countingQuestionsNumber); //calling showQuestions function
+    questionCount(questionNumber); //passing question number value to questionCount
+    clearInterval(counter); //clear counter
+    startTimer(timeValue); //calling startTimer function
 
-	} else {
-		clearInterval(counter); //clear counter
-		showResult(); //calling showResult function
-		dontDisplayQuizBox()
-	}
+  } else {
+    clearInterval(counter); //clear counter
+    showResult(); //calling showResult function
+    dontDisplayQuizBox()
+  }
 }
 
 // getting questions and options from array
